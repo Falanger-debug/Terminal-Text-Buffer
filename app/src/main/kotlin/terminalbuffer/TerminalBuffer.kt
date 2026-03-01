@@ -6,7 +6,9 @@ import terminalbuffer.models.Cursor
 import terminalbuffer.models.TextAttributes
 
 class TerminalBuffer(
-    val width: Int, val height: Int, val maxScrollBack: Int
+    val width: Int,
+    val height: Int,
+    val maxScrollBack: Int
 ) {
     companion object {
         const val MAX_WIDTH = 2000
@@ -47,21 +49,26 @@ class TerminalBuffer(
 
 
     fun writeText(text: String) {
-        for (char in text) {
+        val codePoints = text.codePoints().toArray()
+
+        for (codePoint in codePoints) {
             val currentRow = cursor.row
             val currentCol = cursor.col
             val cell = screen[currentRow][currentCol]
 
-            cell.update(char, currentAttributes)
+            cell.update(codePoint, currentAttributes)
 
-            if (currentCol == width - 1) break
+            if (currentCol == width - 1)
+                break
 
             cursor.move(right = 1)
         }
     }
 
     fun insertText(text: String) {
-        for (char in text) {
+        val codePoints = text.codePoints().toArray()
+
+        for (codePoint in codePoints) {
             val currentRow = cursor.row
             val currentCol = cursor.col
 
@@ -69,10 +76,10 @@ class TerminalBuffer(
                 val targetCell = screen[currentRow][col]
                 val sourceCell = screen[currentRow][col - 1]
 
-                targetCell.update(sourceCell.char, sourceCell.attributes)
+                targetCell.update(sourceCell.codePoint, sourceCell.attributes)
             }
 
-            screen[currentRow][currentCol].update(char, currentAttributes)
+            screen[currentRow][currentCol].update(codePoint, currentAttributes)
 
             if (currentCol == width - 1) {
                 if (currentRow == height - 1) {
@@ -91,7 +98,7 @@ class TerminalBuffer(
         val currentRow = cursor.row
 
         for (col in 0 until width) {
-            screen[currentRow][col].update(char, currentAttributes)
+            screen[currentRow][col].update(char.code, currentAttributes)
         }
     }
 
@@ -117,7 +124,7 @@ class TerminalBuffer(
 
         for (row in 0 until height) {
             for (col in 0 until width) {
-                screen[row][col].update(' ', defaultAttributes)
+                screen[row][col].update(' '.code, defaultAttributes)
             }
         }
 
@@ -129,8 +136,11 @@ class TerminalBuffer(
         scrollBack.clear()
     }
 
-    fun getCharAt(col: Int, row: Int): Char {
-        return getCellAt(col, row).char
+    fun getCharAt(col: Int, row: Int): String {
+        val cell = getCellAt(col, row)
+        return buildString {
+            appendCodePoint(cell.codePoint)
+        }
     }
 
     fun getAttributesAt(col: Int, row: Int): TextAttributes {
@@ -139,11 +149,16 @@ class TerminalBuffer(
 
     fun getLineAsString(row: Int): String {
         return if (row in 0..<height) {
-            screen[row].joinToString("") { it.char.toString() }
+            screen[row].toText()
         } else if (row < 0 && row >= -scrollBack.size) {
             val indexInDeque = scrollBack.size + row
-            scrollBack[indexInDeque].joinToString("") { it.char.toString() }
+            scrollBack[indexInDeque].toText()
         } else {
+            val scrollBackMsg = if (scrollBack.isNotEmpty()) {
+                " and from -${scrollBack.size} to -1 for scroll back"
+            } else {
+                " (scroll back is currently empty)"
+            }
             throw IndexOutOfBoundsException("Row index $row is out of bounds. Valid range is 0 to ${height - 1} for screen and -${scrollBack.size} to -1 for scroll back.")
         }
     }
@@ -178,6 +193,14 @@ class TerminalBuffer(
                 " (scroll back is currently empty)"
             }
             throw IndexOutOfBoundsException("Row index $row is out of bounds. Valid range is 0 to ${height - 1} for screen$scrollBackMsg.")
+        }
+    }
+
+    private fun Array<Cell>.toText(): String {
+        return buildString {
+            for (cell in this@toText) {
+                appendCodePoint(cell.codePoint)
+            }
         }
     }
 }

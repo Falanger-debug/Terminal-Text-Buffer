@@ -54,8 +54,8 @@ class TerminalBufferInitTest {
             val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 1000)
 
             // Assert
-            assertEquals(' ', buffer.getCharAt(0, 0))
-            assertEquals(' ', buffer.getCharAt(79, 23))
+            assertEquals(" ", buffer.getCharAt(0, 0))
+            assertEquals(" ", buffer.getCharAt(79, 23))
         }
 
         @Test

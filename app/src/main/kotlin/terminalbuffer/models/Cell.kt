@@ -1,11 +1,10 @@
 package terminalbuffer.models
 
 data class Cell(
-    var char: Char = ' ',
-    var attributes: TextAttributes = TextAttributes()
+    var codePoint: Int = ' '.code, var attributes: TextAttributes = TextAttributes()
 ) {
-    fun update(newChar: Char, newAttributes: TextAttributes) {
-        this.char = newChar
+    fun update(newCodePoint: Int, newAttributes: TextAttributes) {
+        this.codePoint = newCodePoint
         this.attributes = newAttributes.copy(
             styles = newAttributes.styles.toMutableSet()
         )

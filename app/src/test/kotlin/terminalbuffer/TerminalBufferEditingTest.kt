@@ -24,9 +24,9 @@ class TerminalBufferEditingTest {
             // Assert
             assertEquals(2, buffer.cursor.col)
             assertEquals(0, buffer.cursor.row)
-            assertEquals('H', buffer.getCharAt(0, 0))
-            assertEquals('i', buffer.getCharAt(1, 0))
-            assertEquals(' ', buffer.getCharAt(2, 0))
+            assertEquals("H", buffer.getCharAt(0, 0))
+            assertEquals("i", buffer.getCharAt(1, 0))
+            assertEquals(" ", buffer.getCharAt(2, 0))
         }
 
         @Test
@@ -41,7 +41,7 @@ class TerminalBufferEditingTest {
             // Assert
             assertEquals(5, buffer.cursor.col)
             assertEquals(2, buffer.cursor.row)
-            assertEquals(' ', buffer.getCharAt(5, 2))
+            assertEquals(" ", buffer.getCharAt(5, 2))
         }
 
         @Test
@@ -54,8 +54,8 @@ class TerminalBufferEditingTest {
             buffer.writeText("0123456789")
 
             // Assert
-            assertEquals('0', buffer.getCharAt(0, 0))
-            assertEquals('9', buffer.getCharAt(9, 0))
+            assertEquals("0", buffer.getCharAt(0, 0))
+            assertEquals("9", buffer.getCharAt(9, 0))
             assertEquals(9, buffer.cursor.col)
         }
 
@@ -69,8 +69,8 @@ class TerminalBufferEditingTest {
             buffer.writeText("ABCD")
 
             // Assert
-            assertEquals('A', buffer.getCharAt(8, 0))
-            assertEquals('B', buffer.getCharAt(9, 0))
+            assertEquals("A", buffer.getCharAt(8, 0))
+            assertEquals("B", buffer.getCharAt(9, 0))
             assertEquals(9, buffer.cursor.col)
             assertEquals(0, buffer.cursor.row)
         }
@@ -114,11 +114,11 @@ class TerminalBufferEditingTest {
             buffer.fillLine('*')
 
             // Assert
-            assertEquals('*', buffer.getCharAt(0, 2))
-            assertEquals('*', buffer.getCharAt(5, 2))
-            assertEquals('*', buffer.getCharAt(9, 2))
-            assertEquals(' ', buffer.getCharAt(0, 1))
-            assertEquals(' ', buffer.getCharAt(0, 3))
+            assertEquals("*", buffer.getCharAt(0, 2))
+            assertEquals("*", buffer.getCharAt(5, 2))
+            assertEquals("*", buffer.getCharAt(9, 2))
+            assertEquals(" ", buffer.getCharAt(0, 1))
+            assertEquals(" ", buffer.getCharAt(0, 3))
         }
     }
 
@@ -136,12 +136,12 @@ class TerminalBufferEditingTest {
             buffer.insertText("DE")
 
             // Assert
-            assertEquals('A', buffer.getCharAt(0, 0))
-            assertEquals('B', buffer.getCharAt(1, 0))
-            assertEquals('C', buffer.getCharAt(2, 0))
-            assertEquals('D', buffer.getCharAt(3, 0))
-            assertEquals('E', buffer.getCharAt(4, 0))
-            assertEquals('F', buffer.getCharAt(5, 0))
+            assertEquals("A", buffer.getCharAt(0, 0))
+            assertEquals("B", buffer.getCharAt(1, 0))
+            assertEquals("C", buffer.getCharAt(2, 0))
+            assertEquals("D", buffer.getCharAt(3, 0))
+            assertEquals("E", buffer.getCharAt(4, 0))
+            assertEquals("F", buffer.getCharAt(5, 0))
         }
 
         @Test
@@ -156,9 +156,9 @@ class TerminalBufferEditingTest {
             buffer.insertText("A")
 
             // Assert
-            assertEquals('A', buffer.getCharAt(0, 0))
-            assertEquals('1', buffer.getCharAt(1, 0))
-            assertEquals('4', buffer.getCharAt(4, 0))
+            assertEquals("A", buffer.getCharAt(0, 0))
+            assertEquals("1", buffer.getCharAt(1, 0))
+            assertEquals("4", buffer.getCharAt(4, 0))
         }
 
         @Test
@@ -171,9 +171,9 @@ class TerminalBufferEditingTest {
             buffer.insertText("XYZ")
 
             // Assert
-            assertEquals('X', buffer.getCharAt(3, 0))
-            assertEquals('Y', buffer.getCharAt(4, 0))
-            assertEquals('Z', buffer.getCharAt(0, 1))
+            assertEquals("X", buffer.getCharAt(3, 0))
+            assertEquals("Y", buffer.getCharAt(4, 0))
+            assertEquals("Z", buffer.getCharAt(0, 1))
             assertEquals(1, buffer.cursor.col)
             assertEquals(1, buffer.cursor.row)
         }
@@ -196,11 +196,11 @@ class TerminalBufferEditingTest {
             buffer.insertEmptyLineAtTheBottom()
 
             // Assert
-            assertEquals('R', buffer.getCharAt(0, 0))
-            assertEquals('2', buffer.getCharAt(4, 0))
-            assertEquals('R', buffer.getCharAt(0, 1))
-            assertEquals('3', buffer.getCharAt(4, 1))
-            assertEquals(' ', buffer.getCharAt(0, 2))
+            assertEquals("R", buffer.getCharAt(0, 0))
+            assertEquals("2", buffer.getCharAt(4, 0))
+            assertEquals("R", buffer.getCharAt(0, 1))
+            assertEquals("3", buffer.getCharAt(4, 1))
+            assertEquals(" ", buffer.getCharAt(0, 2))
         }
 
         @Test
@@ -258,7 +258,7 @@ class TerminalBufferEditingTest {
             for (row in 0 until 5) {
                 for (col in 0 until 10) {
                     assertEquals(
-                        ' ', buffer.getCharAt(col, row), "Cell ($col, $row) should be cleared to space"
+                        " ", buffer.getCharAt(col, row), "Cell ($col, $row) should be cleared to space"
                     )
                 }
             }
@@ -315,7 +315,7 @@ class TerminalBufferEditingTest {
             // Assert
             assertEquals(0, buffer.cursor.col)
             assertEquals(0, buffer.cursor.row)
-            assertEquals(' ', buffer.getCharAt(0, 0))
+            assertEquals(" ", buffer.getCharAt(0, 0))
             assertEquals(Color.DEFAULT_FG, buffer.getAttributesAt(0, 0).foreground)
             assertEquals(0, buffer.currentScrollBackSize)
         }

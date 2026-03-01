@@ -27,7 +27,7 @@ class TerminalBufferContentAccessTest {
 
             // Assert
             val retrievedAttrs = buffer.getAttributesAt(3, 2)
-            assertEquals('X', buffer.getCharAt(3, 2))
+            assertEquals("X", buffer.getCharAt(3, 2))
             assertEquals(Color.CYAN, retrievedAttrs.foreground)
             assertTrue(retrievedAttrs.styles.contains(Style.ITALIC))
         }
@@ -44,7 +44,7 @@ class TerminalBufferContentAccessTest {
             buffer.insertEmptyLineAtTheBottom()
 
             // Assert
-            assertEquals('Z', buffer.getCharAt(5, -1))
+            assertEquals("Z", buffer.getCharAt(5, -1))
             assertEquals(Color.YELLOW, buffer.getAttributesAt(5, -1).background)
         }
 
