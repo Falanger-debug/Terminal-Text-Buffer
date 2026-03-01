@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferContentAccessTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cell.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cell.kt" afterDir="false" />
-    </list>
+    <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +80,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TerminalBufferContentAccessTest">
+  <component name="RunManager" selected="Gradle.TerminalBufferCursorTest">
     <configuration name="GetCharAtAndAttributesAt" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -124,6 +119,30 @@
             <option value=":app:test" />
             <option value="--tests" />
             <option value="&quot;terminalbuffer.TerminalBufferContentAccessTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="TerminalBufferCursorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;terminalbuffer.TerminalBufferCursorTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -184,6 +203,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TerminalBufferCursorTest" />
         <item itemvalue="Gradle.TerminalBufferContentAccessTest" />
         <item itemvalue="Gradle.GetCharAtAndAttributesAt" />
         <item itemvalue="Gradle.TerminalBufferInitTest" />
@@ -206,7 +226,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772369144400</updated>
-      <workItem from="1772369147450" duration="2126000" />
+      <workItem from="1772369147450" duration="2841000" />
     </task>
     <servers />
   </component>
