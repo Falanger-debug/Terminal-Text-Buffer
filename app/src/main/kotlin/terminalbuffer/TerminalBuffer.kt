@@ -6,9 +6,7 @@ import terminalbuffer.models.Cursor
 import terminalbuffer.models.TextAttributes
 
 class TerminalBuffer(
-    val width: Int,
-    val height: Int,
-    val maxScrollBack: Int
+    val width: Int, val height: Int, val maxScrollBack: Int
 ) {
     companion object {
         const val MAX_WIDTH = 2000
@@ -56,8 +54,7 @@ class TerminalBuffer(
 
             cell.update(char, currentAttributes)
 
-            if (currentCol == width - 1)
-                break
+            if (currentCol == width - 1) break
 
             cursor.move(right = 1)
         }
@@ -124,7 +121,7 @@ class TerminalBuffer(
             }
         }
 
-        cursor.setPosition(0,0)
+        cursor.setPosition(0, 0)
     }
 
     fun clearScreenAndScrollBack() {
@@ -152,14 +149,15 @@ class TerminalBuffer(
     }
 
     fun getScreenAsString(): String {
-        return screen.joinToString("\n") { row -> row.joinToString("") { it.char.toString() } } // TODO
+        return (0 until height).joinToString("\n") { row ->
+            getLineAsString(row)
+        }
     }
 
     fun getEntireContentAsString(): String {
-        // TODO
-        val scrollBackContent = scrollBack.joinToString("\n") { row -> row.joinToString("") { it.char.toString() } }
-        val screenContent = getScreenAsString()
-        return if (scrollBackContent.isEmpty()) screenContent else "$scrollBackContent\n$screenContent"
+        return (-scrollBack.size until height).joinToString("\n") { row ->
+            getLineAsString(row)
+        }
     }
 
 
@@ -182,8 +180,4 @@ class TerminalBuffer(
             throw IndexOutOfBoundsException("Row index $row is out of bounds. Valid range is 0 to ${height - 1} for screen$scrollBackMsg.")
         }
     }
-}
-
-fun main() {
-    println(TerminalBuffer(80, 60, 1000))
 }
