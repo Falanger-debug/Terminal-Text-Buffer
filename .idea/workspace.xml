@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="">
+    <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="refactor: change character representation to code points in Cell and TerminalBuffer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cell.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cell.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferContentAccessTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferContentAccessTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferEditingTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferEditingTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferInitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferInitTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,53 +42,53 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "dziczekdzik"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dziczekdzik&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Falanger-debug/Terminal-Text-Buffer.git",
-    "accountId": "7af11438-0706-4253-b222-3ed2e3dee0f4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Falanger-debug/Terminal-Text-Buffer.git&quot;,
+    &quot;accountId&quot;: &quot;7af11438-0706-4253-b222-3ed2e3dee0f4&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="3ALQ01wCPGAiWjYbtueHmtLfyhJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.GetCharAtAndAttributesAt.executor": "Run",
-    "Gradle.TerminalBufferContentAccessTest.executor": "Run",
-    "Gradle.TerminalBufferCursorTest.executor": "Run",
-    "Gradle.TerminalBufferEditingTest.executor": "Run",
-    "Gradle.TerminalBufferInitTest.executor": "Run",
-    "Gradle.Tests in 'terminalbuffer'.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.GetCharAtAndAttributesAt.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TerminalBufferContentAccessTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TerminalBufferCursorTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TerminalBufferEditingTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TerminalBufferInitTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'terminalbuffer'.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
       <recent name="org.example" />
@@ -245,7 +240,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772369144400</updated>
-      <workItem from="1772369147450" duration="6509000" />
+      <workItem from="1772369147450" duration="7716000" />
     </task>
     <servers />
   </component>
