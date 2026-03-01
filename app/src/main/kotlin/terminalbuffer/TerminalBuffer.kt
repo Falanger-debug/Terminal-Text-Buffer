@@ -47,6 +47,7 @@ class TerminalBuffer(
         cursor.move(up, down, left, right)
     }
 
+
     fun writeText(text: String) {
         for (char in text) {
             val currentRow = cursor.row
@@ -87,7 +88,6 @@ class TerminalBuffer(
                 cursor.move(right = 1)
             }
         }
-
     }
 
     fun fillLine(char: Char = ' ') {
@@ -124,7 +124,7 @@ class TerminalBuffer(
             }
         }
 
-        cursor.setPosition(0, 0)
+        cursor.setPosition(0,0)
     }
 
     fun clearScreenAndScrollBack() {
@@ -161,6 +161,7 @@ class TerminalBuffer(
         val screenContent = getScreenAsString()
         return if (scrollBackContent.isEmpty()) screenContent else "$scrollBackContent\n$screenContent"
     }
+
 
     private fun getCellAt(col: Int, row: Int): Cell {
         if (col !in 0 until width) {

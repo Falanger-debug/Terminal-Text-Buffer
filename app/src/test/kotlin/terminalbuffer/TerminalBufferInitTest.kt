@@ -13,8 +13,10 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should successfully create buffer with typical valid dimensions`() {
+            // Arrange & Act
             val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 1000)
 
+            // Assert
             assertEquals(80, buffer.width)
             assertEquals(24, buffer.height)
             assertEquals(1000, buffer.maxScrollBack)
@@ -22,8 +24,10 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should successfully create buffer with minimum allowed dimensions`() {
+            // Arrange & Act
             val buffer = TerminalBuffer(width = 1, height = 1, maxScrollBack = 0)
 
+            // Assert
             assertEquals(1, buffer.width)
             assertEquals(1, buffer.height)
             assertEquals(0, buffer.maxScrollBack)
@@ -31,12 +35,14 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should successfully create buffer with maximum allowed dimensions`() {
+            // Arrange & Act
             val buffer = TerminalBuffer(
                 width = TerminalBuffer.MAX_WIDTH,
                 height = TerminalBuffer.MAX_HEIGHT,
                 maxScrollBack = TerminalBuffer.MAX_SCROLL_BACK
             )
 
+            // Assert
             assertEquals(TerminalBuffer.MAX_WIDTH, buffer.width)
             assertEquals(TerminalBuffer.MAX_HEIGHT, buffer.height)
             assertEquals(TerminalBuffer.MAX_SCROLL_BACK, buffer.maxScrollBack)
@@ -44,18 +50,23 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should initialize screen with default empty cells`() {
+            // Arrange & Act
             val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 1000)
 
+            // Assert
             assertEquals(' ', buffer.getCharAt(0, 0))
             assertEquals(' ', buffer.getCharAt(79, 23))
         }
 
         @Test
         fun `should initialize screen with default attributes`() {
+            // Arrange
             val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 1000)
 
+            // Act
             val attrs = buffer.getAttributesAt(0, 0)
 
+            // Assert
             assertEquals(Color.DEFAULT_FG, attrs.foreground)
             assertEquals(Color.DEFAULT_BG, attrs.background)
             assertEquals(0, attrs.styles.size)
@@ -67,6 +78,7 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should throw InvalidConfigurationException for zero or negative width`() {
+            // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(width = 0, height = 24, maxScrollBack = 100)
             }
@@ -77,6 +89,7 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should throw InvalidConfigurationException for zero or negative height`() {
+            // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(width = 80, height = 0, maxScrollBack = 100)
             }
@@ -87,6 +100,7 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should throw InvalidConfigurationException for negative scrollBack`() {
+            // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(width = 80, height = 24, maxScrollBack = -1)
             }
@@ -98,6 +112,7 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should throw InvalidConfigurationException when width exceeds maximum`() {
+            // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(
                     width = TerminalBuffer.MAX_WIDTH + 1,
@@ -109,6 +124,7 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should throw InvalidConfigurationException when height exceeds maximum`() {
+            // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(
                     width = 80,
@@ -120,6 +136,7 @@ class TerminalBufferInitTest {
 
         @Test
         fun `should throw InvalidConfigurationException when scrollBack exceeds maximum`() {
+            // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(
                     width = 80,

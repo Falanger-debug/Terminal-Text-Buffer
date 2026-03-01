@@ -20,6 +20,16 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -56,6 +66,7 @@
     "Gradle.GetCharAtAndAttributesAt.executor": "Run",
     "Gradle.TerminalBufferContentAccessTest.executor": "Run",
     "Gradle.TerminalBufferCursorTest.executor": "Run",
+    "Gradle.TerminalBufferEditingTest.executor": "Run",
     "Gradle.TerminalBufferInitTest.executor": "Run",
     "Gradle.Tests in 'terminalbuffer'.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -227,7 +238,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772369144400</updated>
-      <workItem from="1772369147450" duration="3480000" />
+      <workItem from="1772369147450" duration="4315000" />
     </task>
     <servers />
   </component>
