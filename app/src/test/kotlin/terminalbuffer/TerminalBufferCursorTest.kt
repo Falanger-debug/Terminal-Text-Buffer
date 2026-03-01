@@ -93,7 +93,7 @@ class TerminalBufferCursorTest {
         }
 
         @Test
-        fun `should clamp to down-right edge when moving excessively outside screen bounds`() {
+        fun `should clamp to bottom-right edge when moving excessively outside screen bounds`() {
             // Arrange
             val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 100)
             buffer.setCursorPosition(40, 12)
