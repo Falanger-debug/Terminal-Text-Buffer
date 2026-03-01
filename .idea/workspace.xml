@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="" />
+    <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferContentAccessTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cell.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cell.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +58,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.GetCharAtAndAttributesAt.executor": "Run",
+    "Gradle.TerminalBufferContentAccessTest.executor": "Run",
+    "Gradle.TerminalBufferInitTest.executor": "Run",
+    "Gradle.Tests in 'terminalbuffer'.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -76,7 +85,55 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TerminalBufferInitTest">
+  <component name="RunManager" selected="Gradle.TerminalBufferContentAccessTest">
+    <configuration name="GetCharAtAndAttributesAt" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;terminalbuffer.TerminalBufferContentAccessTest$GetCharAtAndAttributesAt&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="TerminalBufferContentAccessTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;terminalbuffer.TerminalBufferContentAccessTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="TerminalBufferInitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -127,6 +184,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TerminalBufferContentAccessTest" />
+        <item itemvalue="Gradle.GetCharAtAndAttributesAt" />
         <item itemvalue="Gradle.TerminalBufferInitTest" />
         <item itemvalue="Gradle.Tests in 'terminalbuffer'" />
       </list>
@@ -147,7 +206,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772369144400</updated>
-      <workItem from="1772369147450" duration="1529000" />
+      <workItem from="1772369147450" duration="2126000" />
     </task>
     <servers />
   </component>
