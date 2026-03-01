@@ -55,6 +55,7 @@
   "keyToString": {
     "Gradle.GetCharAtAndAttributesAt.executor": "Run",
     "Gradle.TerminalBufferContentAccessTest.executor": "Run",
+    "Gradle.TerminalBufferCursorTest.executor": "Run",
     "Gradle.TerminalBufferInitTest.executor": "Run",
     "Gradle.Tests in 'terminalbuffer'.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -80,7 +81,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TerminalBufferCursorTest">
+  <component name="RunManager" selected="Gradle.TerminalBufferEditingTest">
     <configuration name="GetCharAtAndAttributesAt" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -153,6 +154,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="TerminalBufferEditingTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;terminalbuffer.TerminalBufferEditingTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="TerminalBufferInitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -177,37 +202,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'terminalbuffer'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;terminalbuffer.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TerminalBufferEditingTest" />
         <item itemvalue="Gradle.TerminalBufferCursorTest" />
         <item itemvalue="Gradle.TerminalBufferContentAccessTest" />
         <item itemvalue="Gradle.GetCharAtAndAttributesAt" />
         <item itemvalue="Gradle.TerminalBufferInitTest" />
-        <item itemvalue="Gradle.Tests in 'terminalbuffer'" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +227,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1772369144400</updated>
-      <workItem from="1772369147450" duration="2841000" />
+      <workItem from="1772369147450" duration="3480000" />
     </task>
     <servers />
   </component>

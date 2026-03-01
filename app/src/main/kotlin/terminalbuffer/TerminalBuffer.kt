@@ -5,16 +5,17 @@ import terminalbuffer.models.Cell
 import terminalbuffer.models.Cursor
 import terminalbuffer.models.TextAttributes
 
-class TerminalBuffer (
+class TerminalBuffer(
     val width: Int,
     val height: Int,
     val maxScrollBack: Int
-){
+) {
     companion object {
         const val MAX_WIDTH = 2000
         const val MAX_HEIGHT = 2000
         const val MAX_SCROLL_BACK = 100_000
     }
+
     init {
         if (width !in 1..MAX_WIDTH) {
             throw InvalidConfigurationException("Width must be a positive integer between 1 and $MAX_WIDTH.")
@@ -31,6 +32,8 @@ class TerminalBuffer (
     private val scrollBack: ArrayDeque<Array<Cell>> = ArrayDeque(maxScrollBack)
     val cursor = Cursor(width, height)
     private var currentAttributes: TextAttributes = TextAttributes()
+    val currentScrollBackSize: Int
+        get() = scrollBack.size
 
     fun setAttributes(attributes: TextAttributes) {
         currentAttributes = attributes
@@ -60,11 +63,39 @@ class TerminalBuffer (
     }
 
     fun insertText(text: String) {
-// TODO
+        for (char in text) {
+            val currentRow = cursor.row
+            val currentCol = cursor.col
+
+            for (col in width - 1 downTo currentCol + 1) {
+                val targetCell = screen[currentRow][col]
+                val sourceCell = screen[currentRow][col - 1]
+
+                targetCell.update(sourceCell.char, sourceCell.attributes)
+            }
+
+            screen[currentRow][currentCol].update(char, currentAttributes)
+
+            if (currentCol == width - 1) {
+                if (currentRow == height - 1) {
+                    insertEmptyLineAtTheBottom()
+                    cursor.setPosition(0, height - 1)
+                } else {
+                    cursor.setPosition(0, currentRow + 1)
+                }
+            } else {
+                cursor.move(right = 1)
+            }
+        }
+
     }
 
     fun fillLine(char: Char = ' ') {
-// TODO
+        val currentRow = cursor.row
+
+        for (col in 0 until width) {
+            screen[currentRow][col].update(char, currentAttributes)
+        }
     }
 
     fun insertEmptyLineAtTheBottom() {
@@ -85,11 +116,20 @@ class TerminalBuffer (
     }
 
     fun clearScreen() {
-// TODO
+        val defaultAttributes = TextAttributes()
+
+        for (row in 0 until height) {
+            for (col in 0 until width) {
+                screen[row][col].update(' ', defaultAttributes)
+            }
+        }
+
+        cursor.setPosition(0, 0)
     }
 
     fun clearScreenAndScrollBack() {
-// TODO
+        clearScreen()
+        scrollBack.clear()
     }
 
     fun getCharAt(col: Int, row: Int): Char {
@@ -101,7 +141,14 @@ class TerminalBuffer (
     }
 
     fun getLineAsString(row: Int): String {
-        return screen[row].joinToString("") { it.char.toString() } // TODO
+        return if (row in 0..<height) {
+            screen[row].joinToString("") { it.char.toString() }
+        } else if (row < 0 && row >= -scrollBack.size) {
+            val indexInDeque = scrollBack.size + row
+            scrollBack[indexInDeque].joinToString("") { it.char.toString() }
+        } else {
+            throw IndexOutOfBoundsException("Row index $row is out of bounds. Valid range is 0 to ${height - 1} for screen and -${scrollBack.size} to -1 for scroll back.")
+        }
     }
 
     fun getScreenAsString(): String {
