@@ -11,13 +11,10 @@ A neat and memory-optimized implementation of a terminal buffer in Kotlin—desi
 
 - [Tech Stack](#-tech-stack)
 - [Requirements Met](#-requirements-met)
-- [Architecture](#-architecture)
 - [Class Structure](#-class-structure)
 - [Test Coverage](#-test-coverage)
 - [Design Trade-offs](#-design-trade-offs)
-- [Performance Considerations](#-performance-considerations)
 - [Getting Started](#-getting-started--local-setup)
-- [Quick Start Examples](#quick-start-examples)
 
 ---
 
