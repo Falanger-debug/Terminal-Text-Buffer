@@ -6,8 +6,8 @@ import terminalbuffer.models.Cursor
 import terminalbuffer.models.TextAttributes
 
 class TerminalBuffer(
-    val width: Int,
-    val height: Int,
+    var width: Int,
+    var height: Int,
     val maxScrollBack: Int
 ) {
     companion object {
@@ -28,7 +28,7 @@ class TerminalBuffer(
         }
     }
 
-    private val screen: Array<Array<Cell>> = Array(height) { Array(width) { Cell() } }
+    private var screen: Array<Array<Cell>> = Array(height) { Array(width) { Cell() } }
     private val scrollBack: ArrayDeque<Array<Cell>> = ArrayDeque(maxScrollBack)
     val cursor = Cursor(width, height)
     private var currentAttributes: TextAttributes = TextAttributes()
@@ -159,7 +159,7 @@ class TerminalBuffer(
             } else {
                 " (scroll back is currently empty)"
             }
-            throw IndexOutOfBoundsException("Row index $row is out of bounds. Valid range is 0 to ${height - 1} for screen and -${scrollBack.size} to -1 for scroll back.")
+            throw IndexOutOfBoundsException("Row index $row is out of bounds. Valid range is 0 to ${height - 1} for screen$scrollBackMsg.")
         }
     }
 
@@ -173,6 +173,40 @@ class TerminalBuffer(
         return (-scrollBack.size until height).joinToString("\n") { row ->
             getLineAsString(row)
         }
+    }
+
+    fun resize(newWidth: Int, newHeight: Int) {
+        if (newWidth !in 1..MAX_WIDTH) throw InvalidConfigurationException("Invalid width.")
+        if (newHeight !in 1..MAX_HEIGHT) throw InvalidConfigurationException("Invalid height.")
+
+        if (newHeight < height) {
+            val linesToPush = height - newHeight
+            for (i in 0 until linesToPush) {
+                if (maxScrollBack > 0) {
+                    if (scrollBack.size == maxScrollBack) scrollBack.removeFirst()
+                    scrollBack.addLast(screen[i])
+                }
+            }
+        }
+
+        val newScreen = Array(newHeight) { Array(newWidth) { Cell() } }
+        val rowsToCopy = minOf(height, newHeight)
+        val sourceRowOffset = if (newHeight < height) height - newHeight else 0
+
+        for (r in 0 until rowsToCopy) {
+            val sourceRow = screen[sourceRowOffset + r]
+            val colsToCopy = minOf(width, newWidth)
+
+            for (c in 0 until colsToCopy) {
+                newScreen[r][c] = sourceRow[c]
+            }
+        }
+
+        this.width = newWidth
+        this.height = newHeight
+        this.screen = newScreen
+
+        cursor.updateBounds(newWidth, newHeight)
     }
 
 

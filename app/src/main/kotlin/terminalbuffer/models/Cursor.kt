@@ -1,8 +1,8 @@
 package terminalbuffer.models
 
 class Cursor (
-    private val maxCol: Int,
-    private val maxRow: Int
+    private var maxCol: Int,
+    private var maxRow: Int
 ){
     var col: Int = 0
         private set
@@ -18,5 +18,13 @@ class Cursor (
         val newCol = col - left + right
         val newRow = row - up + down
         setPosition(newCol, newRow)
+    }
+
+    fun updateBounds(newWidth: Int, newHeight: Int) {
+        this.maxCol = newWidth
+        this.maxRow = newHeight
+
+        this.col = this.col.coerceIn(0, maxCol - 1)
+        this.row = this.row.coerceIn(0, maxRow - 1)
     }
 }
