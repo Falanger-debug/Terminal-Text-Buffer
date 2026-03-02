@@ -146,4 +146,41 @@ class TerminalBufferUnicodeTest {
             assertEquals(expected, buffer.getEntireContentAsString())
         }
     }
+
+    @Nested
+    inner class ResizeUnicodeText {
+
+        @Test
+        fun `should preserve unicode characters without corruption when cropping screen`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 2, maxScrollBack = 100)
+            buffer.setCursorPosition(0, 0)
+            buffer.writeText("1👽2🚀3")
+
+            // Act
+            buffer.resize(newWidth = 3, newHeight = 2)
+
+            // Assert
+            assertEquals("1👽2\n   ", buffer.getScreenAsString())
+            assertEquals("👽", buffer.getCharAt(1, 0))
+        }
+
+        @Test
+        fun `should push unicode characters safely to scrollback on height decrease`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 3, height = 2, maxScrollBack = 100)
+            buffer.setCursorPosition(0, 0)
+            buffer.writeText("🦀🦀🦀")
+            buffer.setCursorPosition(0, 1)
+            buffer.writeText("🌟🌟🌟")
+
+            // Act
+            buffer.resize(newWidth = 3, newHeight = 1)
+
+            // Assert
+            assertEquals("🌟🌟🌟", buffer.getScreenAsString())
+            assertEquals(1, buffer.currentScrollBackSize)
+            assertEquals("🦀🦀🦀", buffer.getLineAsString(-1))
+        }
+    }
 }

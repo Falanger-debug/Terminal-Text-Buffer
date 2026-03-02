@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beeea4d8-2a7a-48b2-8f4f-c1f739040074" name="Changes" comment="feat: implement resize functionality for TerminalBuffer and update Cursor bounds">
-      <change afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferResizeTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/TerminalBuffer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cursor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/terminalbuffer/models/Cursor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferContentAccessTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferContentAccessTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferCursorTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferCursorTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferEditingTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferEditingTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferInitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferInitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferUnicodeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/kotlin/terminalbuffer/TerminalBufferUnicodeTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +249,7 @@
       <updated>1772369144400</updated>
       <workItem from="1772369147450" duration="7716000" />
       <workItem from="1772390240140" duration="949000" />
-      <workItem from="1772431885643" duration="304000" />
+      <workItem from="1772431885643" duration="2660000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add Unicode handling tests for TerminalBuffer">
       <option name="closed" value="true" />

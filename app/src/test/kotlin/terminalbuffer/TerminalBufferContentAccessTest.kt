@@ -162,5 +162,78 @@ class TerminalBufferContentAccessTest {
             val expected = "Two \nCurr"
             assertEquals(expected, result)
         }
+
+        @Test
+        fun `should return only screen content when maxScrollBack is zero and lines were pushed`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 4, height = 2, maxScrollBack = 0)
+
+            // Act
+            buffer.writeText("Drop")
+            buffer.insertEmptyLineAtTheBottom()
+            buffer.setCursorPosition(0, 0)
+            buffer.writeText("Keep")
+            val result = buffer.getEntireContentAsString()
+
+            // Assert
+            val expected = "Keep\n    "
+            assertEquals(expected, result)
+        }
+    }
+
+    @Nested
+    inner class GetLineAsString {
+
+        @Test
+        fun `should return correct line from active screen`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 3, maxScrollBack = 10)
+
+            // Act
+            buffer.setCursorPosition(0, 1)
+            buffer.writeText("Hello")
+            val line = buffer.getLineAsString(1)
+
+            // Assert
+            assertEquals("Hello", line)
+        }
+
+        @Test
+        fun `should return correct line from scrollback history`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 3, maxScrollBack = 10)
+
+            // Act
+            buffer.writeText("Old  ")
+            buffer.insertEmptyLineAtTheBottom()
+            val line = buffer.getLineAsString(-1)
+
+            // Assert
+            assertEquals("Old  ", line)
+        }
+
+        @Test
+        fun `should format exception message correctly when scrollback is empty`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 3, maxScrollBack = 10)
+
+            // Act & Assert
+            val exception = assertThrows<IndexOutOfBoundsException> { buffer.getLineAsString(-1) }
+            assertTrue(exception.message!!.contains("(scroll back is currently empty)"))
+        }
+
+        @Test
+        fun `should format exception message correctly when scrollback is populated`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 3, maxScrollBack = 10)
+
+            // Act
+            buffer.insertEmptyLineAtTheBottom()
+            buffer.insertEmptyLineAtTheBottom()
+
+            // Act & Assert
+            val exception = assertThrows<IndexOutOfBoundsException> { buffer.getLineAsString(-3) }
+            assertTrue(exception.message!!.contains("and from -2 to -1 for scroll back"))
+        }
     }
 }

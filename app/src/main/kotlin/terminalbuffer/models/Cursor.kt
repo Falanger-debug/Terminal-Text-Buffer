@@ -1,9 +1,8 @@
 package terminalbuffer.models
 
-class Cursor (
-    private var maxCol: Int,
-    private var maxRow: Int
-){
+class Cursor(
+    private var maxCol: Int, private var maxRow: Int
+) {
     var col: Int = 0
         private set
     var row: Int = 0

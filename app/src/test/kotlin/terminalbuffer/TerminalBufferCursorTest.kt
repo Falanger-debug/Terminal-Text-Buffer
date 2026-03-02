@@ -105,5 +105,33 @@ class TerminalBufferCursorTest {
             assertEquals(79, buffer.cursor.col)
             assertEquals(23, buffer.cursor.row)
         }
+
+        @Test
+        fun `should not move cursor when no arguments are provided`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 100)
+            buffer.setCursorPosition(10, 10)
+
+            // Act
+            buffer.moveCursor()
+
+            // Assert
+            assertEquals(10, buffer.cursor.col)
+            assertEquals(10, buffer.cursor.row)
+        }
+
+        @Test
+        fun `should calculate net movement when opposing directions are provided`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 100)
+            buffer.setCursorPosition(10, 10)
+
+            // Act
+            buffer.moveCursor(up = 5, down = 2, left = 2, right = 6)
+
+            // Assert
+            assertEquals(14, buffer.cursor.col)
+            assertEquals(7, buffer.cursor.row)
+        }
     }
 }

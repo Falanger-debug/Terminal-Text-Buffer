@@ -1,6 +1,7 @@
 package terminalbuffer
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -8,6 +9,66 @@ import terminalbuffer.exceptions.InvalidConfigurationException
 import terminalbuffer.models.Color
 
 class TerminalBufferInitTest {
+    @Nested
+    inner class InitialState {
+
+        @Test
+        fun `should initialize cursor at top-left origin`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 1000)
+
+            // Act & Assert
+            assertEquals(0, buffer.cursor.col)
+            assertEquals(0, buffer.cursor.row)
+        }
+
+        @Test
+        fun `should initialize with zero current scrollback size`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 80, height = 24, maxScrollBack = 1000)
+
+            // Act & Assert
+            assertEquals(0, buffer.currentScrollBackSize)
+        }
+    }
+
+    @Nested
+    inner class ExceptionMessages {
+
+        @Test
+        fun `should provide descriptive error message for invalid width`() {
+            // Act
+            val exception = assertThrows<InvalidConfigurationException> {
+                TerminalBuffer(width = 0, height = 24, maxScrollBack = 100)
+            }
+
+            // Assert
+            assertTrue(exception.message!!.contains("Width must be a positive integer"))
+        }
+
+        @Test
+        fun `should provide descriptive error message for invalid height`() {
+            // Act
+            val exception = assertThrows<InvalidConfigurationException> {
+                TerminalBuffer(width = 80, height = -5, maxScrollBack = 100)
+            }
+
+            // Assert
+            assertTrue(exception.message!!.contains("Height must be a positive integer"))
+        }
+
+        @Test
+        fun `should provide descriptive error message for invalid scrollback`() {
+            // Act
+            val exception = assertThrows<InvalidConfigurationException> {
+                TerminalBuffer(width = 80, height = 24, maxScrollBack = -1)
+            }
+
+            // Assert
+            assertTrue(exception.message!!.contains("Max scroll back must be an integer"))
+        }
+    }
+
     @Nested
     inner class ValidConfigurations {
 
@@ -115,9 +176,7 @@ class TerminalBufferInitTest {
             // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(
-                    width = TerminalBuffer.MAX_WIDTH + 1,
-                    height = 24,
-                    maxScrollBack = 100
+                    width = TerminalBuffer.MAX_WIDTH + 1, height = 24, maxScrollBack = 100
                 )
             }
         }
@@ -127,9 +186,7 @@ class TerminalBufferInitTest {
             // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(
-                    width = 80,
-                    height = TerminalBuffer.MAX_HEIGHT + 1,
-                    maxScrollBack = 100
+                    width = 80, height = TerminalBuffer.MAX_HEIGHT + 1, maxScrollBack = 100
                 )
             }
         }
@@ -139,9 +196,7 @@ class TerminalBufferInitTest {
             // Act & Assert
             assertThrows<InvalidConfigurationException> {
                 TerminalBuffer(
-                    width = 80,
-                    height = 24,
-                    maxScrollBack = TerminalBuffer.MAX_SCROLL_BACK + 1
+                    width = 80, height = 24, maxScrollBack = TerminalBuffer.MAX_SCROLL_BACK + 1
                 )
             }
         }

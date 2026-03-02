@@ -1,6 +1,8 @@
 package terminalbuffer
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import terminalbuffer.models.Color
@@ -76,6 +78,22 @@ class TerminalBufferEditingTest {
         }
 
         @Test
+        fun `should safely stop when writing exactly to the last cell of the buffer`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 3, maxScrollBack = 100)
+            buffer.setCursorPosition(3, 2)
+
+            // Act
+            buffer.writeText("XYZ")
+
+            // Assert
+            assertEquals("X", buffer.getCharAt(3, 2))
+            assertEquals("Y", buffer.getCharAt(4, 2))
+            assertEquals(4, buffer.cursor.col)
+            assertEquals(2, buffer.cursor.row)
+        }
+
+        @Test
         fun `should apply current attributes independently to each cell`() {
             // Arrange
             val buffer = TerminalBuffer(width = 10, height = 5, maxScrollBack = 100)
@@ -93,12 +111,12 @@ class TerminalBufferEditingTest {
             val attrsY = buffer.getAttributesAt(1, 0)
 
             assertEquals(Color.RED, attrsX.foreground)
-            assert(attrsX.styles.contains(Style.BOLD))
+            assertTrue(attrsX.styles.contains(Style.BOLD))
 
             assertEquals(Color.RED, attrsY.foreground)
             attrsX.styles.add(Style.ITALIC)
 
-            assert(!attrsY.styles.contains(Style.ITALIC)) { "Styles set should be deeply copied!" }
+            assertFalse(attrsY.styles.contains(Style.ITALIC)) { "Styles set should be deeply copied!" }
         }
     }
 
@@ -119,6 +137,36 @@ class TerminalBufferEditingTest {
             assertEquals("*", buffer.getCharAt(9, 2))
             assertEquals(" ", buffer.getCharAt(0, 1))
             assertEquals(" ", buffer.getCharAt(0, 3))
+        }
+
+        @Test
+        fun `should fill line with spaces by default and apply current attributes`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 10, height = 5, maxScrollBack = 100)
+            buffer.setCursorPosition(2, 1)
+            buffer.setAttributes(TextAttributes(background = Color.BLUE))
+
+            // Act
+            buffer.fillLine()
+
+            // Assert
+            assertEquals(" ", buffer.getCharAt(0, 1))
+            assertEquals(" ", buffer.getCharAt(9, 1))
+            assertEquals(Color.BLUE, buffer.getAttributesAt(5, 1).background)
+        }
+
+        @Test
+        fun `should not move cursor after filling the line`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 10, height = 5, maxScrollBack = 100)
+            buffer.setCursorPosition(7, 3)
+
+            // Act
+            buffer.fillLine('-')
+
+            // Assert
+            assertEquals(7, buffer.cursor.col)
+            assertEquals(3, buffer.cursor.row)
         }
     }
 
@@ -176,6 +224,24 @@ class TerminalBufferEditingTest {
             assertEquals("Z", buffer.getCharAt(0, 1))
             assertEquals(1, buffer.cursor.col)
             assertEquals(1, buffer.cursor.row)
+        }
+
+        @Test
+        fun `should trigger scrollback when wrapping text on the last line`() {
+            // Arrange
+            val buffer = TerminalBuffer(width = 5, height = 3, maxScrollBack = 10)
+            buffer.setCursorPosition(0, 0)
+            buffer.writeText("Line1")
+            buffer.setCursorPosition(4, 2)
+
+            // Act
+            buffer.insertText("AB")
+
+            // Assert
+            assertEquals("A", buffer.getCharAt(4, 1))
+            assertEquals("B", buffer.getCharAt(0, 2))
+            assertEquals(1, buffer.currentScrollBackSize)
+            assertEquals("Line1", buffer.getLineAsString(-1))
         }
     }
 
