@@ -5,11 +5,10 @@
 ![Gradle](https://img.shields.io/badge/gradle-build-blue.svg?logo=gradle)
 ![Tests](https://img.shields.io/badge/tests-junit5-brightgreen.svg)
 
-A neat and memory-optimized implementation of a terminal buffer in Kotlin—designed for the greatest IDE makers in the world in mind.
+A neat and memory-optimized implementation of a terminal buffer in Kotlin—designed for the greatest IDE makers in the world in mind:)
 
 ## 📋 Table of Contents
 
-- [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Requirements Met](#-requirements-met)
 - [Architecture](#-architecture)
@@ -19,28 +18,6 @@ A neat and memory-optimized implementation of a terminal buffer in Kotlin—desi
 - [Performance Considerations](#-performance-considerations)
 - [Getting Started](#-getting-started--local-setup)
 - [Quick Start Examples](#quick-start-examples)
-
----
-
-## ✨ Features
-
-- **Text Rendering & Manipulation**
-  - Write and insert text with full support for Unicode Code Points
-  - Per-cell text attributes (colors, styles)
-  - Intelligent cursor movement and positioning
-  
-- **Terminal Operations**
-  - Full line clearing and partial screen clearing operations
-  - Terminal resizing (horizontal and vertical)
-  - Scrollback history for rows that no longer fit on screen
-  
-- **Advanced Styling**
-  - Flexible text attributes system (colors, styles per cell)
-  - Mutable styling for optimized memory usage
-  
-- **Error Handling**
-  - Custom exception hierarchy for better debugging
-  - Comprehensive boundary validation
 
 ---
 
